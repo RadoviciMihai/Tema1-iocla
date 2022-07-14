@@ -1,0 +1,50 @@
+SELECTAREA COMENZII
+	in main se citeste primul cuvant din fiecare comanda
+	daca cuvantul este stop programul se opreste si memoria e stearsa
+	daca nu, este apelata functia select_comand()
+	functia select comand se foloseste de un array de functii si un array de cuvinte pentru a compara cuvantul cu modelul functiei
+	apoi este apelata functia de initiere
+
+INITIEREA
+	fiecare functie are o asociata o functie de initiere care citeste argumentele functiei si apeleaza functia in sine
+
+ALOCDIR & ALOCFILE
+	functii de alocare a structurilor 
+	adauga si numele 
+
+DESTROY_DIR & DESTROY_FILE
+	functii de stergere a a structuriloe
+	destroy_dir functioneza recursiv impreuna cu destroy_dir_list
+
+TOUCH & MKDIR
+	functia touch si add_dir functioneaza similar
+	verifica daca exista deja o lista de fisiere/directoare
+		daca nu atunci lui head_children i se atribuie fisierul/directorul
+		daca da se parcurge lista si se verifica daca exista un fisier/director cu numele respectiv
+			daca da se sterge structura alocata
+			daca nu se adauga la sfarsit
+	MKDIR se foloseste de add_dir
+
+LS
+	este parcursa lista de fisiere si lista de directore si se afiseaza numele
+
+RM & RMDIR
+	se parcurg listele si se apeleaza functiile de stergere daca sunt gasite
+	daca nu este afisat mesajul
+
+CD
+	verifica .. / numele fisierului si este modificat pointerul cu adresa structuri
+	daca nu este gasit este afisat mesajul
+
+TREE
+	Functioneaza recursiv asemanator cu LS dar sunt afisat spatii
+
+PWD
+	este apelat recursiv pana la home - stringul este realcot de fiecare data
+	afisarea se face in fucntia de initiere
+
+MV
+	prima data se fecrifica coluziunea cu alte nume
+	fisierle nu sunt renumite si mutate (ci sterse si recreate)
+	directorul este scos din lista si adaugat cu functia add_dir
+	se folosesc de functiile ajutatoare mv_file si mv_dir
